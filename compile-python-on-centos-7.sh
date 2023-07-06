@@ -10,7 +10,7 @@ fi
 
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
-  exitgit
+  exit 0
 fi
 
 python_version="${1:-$default_python_version}"
