@@ -10,7 +10,7 @@ fi
 
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
-  exit 0
+  exit 1
 fi
 
 python_version="${1:-$default_python_version}"
@@ -24,7 +24,7 @@ gcc --version
 python_dir="Python-$python_version"
 wget https://www.python.org/ftp/python/"$python_version"/"$python_dir".tgz
 tar xvf "$python_dir".tgz
-cd "$python_dir" || (echo "$python_dir does not exist, exiting" && exit 255)
+cd "$python_dir" || (echo "$python_dir does not exist, exiting" && exit 1)
 # флаг --enable-optimizations может все разъебать, возможно лучше без него собирать питон
 ./configure
 make
