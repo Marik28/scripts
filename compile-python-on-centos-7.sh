@@ -42,4 +42,4 @@ fi
 
 # вот так типа нехорошо делать, но нужно, чтобы глобально все было новенькое
 pip3.8 install -U pip setuptools
-pip3.8 install wheel certifi pipenv
+pip3.8 install wheel certifi
