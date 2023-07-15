@@ -14,6 +14,9 @@ if [ "$EUID" -ne 0 ]
 fi
 
 python_version="${1:-$default_python_version}"
+# версия устанавливаемого python'а без номера патча
+python_minor_version=$(echo python_version | grep -Eo "^(\d+\.\d+)")
+
 yum -y install epel-release
 yum -y update
 yum -y groupinstall "Development Tools"
@@ -41,5 +44,5 @@ else
 fi
 
 # вот так типа нехорошо делать, но нужно, чтобы глобально все было новенькое
-pip3.8 install -U pip setuptools
-pip3.8 install wheel certifi
+python"$python_minor_version" -m pip install -U pip setuptools
+python"$python_minor_version" -m pip install wheel certifi
