@@ -15,7 +15,7 @@ fi
 
 python_version="${1:-$default_python_version}"
 # версия устанавливаемого python'а без номера патча
-python_minor_version=$(echo python_version | grep -Eo "^(\d+\.\d+)")
+python_minor_version=$(echo python_version | grep -Po "^(\d+\.\d+)")
 
 yum -y install epel-release
 yum -y update
