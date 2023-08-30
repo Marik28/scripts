@@ -1,7 +1,7 @@
 from functools import wraps
 from time import time
 
-
+# https://stackoverflow.com/a/27737385/17684642
 def timing(f):
     """Measures function execution time"""
     @wraps(f)
