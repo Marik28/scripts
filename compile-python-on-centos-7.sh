@@ -2,7 +2,7 @@
 default_python_version=3.8.16
 curdir=$(pwd)
 
-abort () {
+abort() {
   echo "aborted!"
   cd "$curdir" || exit 1
   exit 1
@@ -18,18 +18,18 @@ if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
   exit 0
 fi
 
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root"
   abort
 fi
 
 python_version="${1:-$default_python_version}"
 # версия устанавливаемого python'а без номера патча
-python_minor_version=$(echo python_version | grep -Po "^(\d+\.\d+)")
+python_minor_version=$(echo "$python_version" | grep -Po "^(\d+\.\d+)")
 configure_params=()
 
 old_versions=("3.6" "3.7")
-[[ ! " ${old_versions[*]} " =~ " ${python_minor_version} " ]]
+[[ ! " ${old_versions[*]} " =~ ${python_minor_version} ]]
 # 0 = true, 1 = false
 use_openssl11=$?
 
