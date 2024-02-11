@@ -42,7 +42,7 @@ if [[ "$use_openssl11" == 0 ]]; then
     yum install -y openssl11 openssl11-devel
     ln -s /usr/lib64/openssl11 /usr/local/openssl11/lib
     ln -s /usr/include/openssl11 /usr/local/openssl11/include
-    configure_params+=(--with-openssl=/usr/include/openssl11)
+    configure_params+=(--with-openssl=/usr/local/openssl11)
   fi
 fi
 #  https://stackoverflow.com/a/70468010/17684642
